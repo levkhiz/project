@@ -24,8 +24,9 @@ func main() {
 }
 
 func calculate(input string) (string, error) {
-	input = strings.ToUpper(strings.TrimSpace(input))
-	parts := strings.Split(input, " ")
+	input = strings.ToUpper(strings.TrimSpace(input)) // "3 + 1\n"
+	parts := strings.Split(input, " ")                // "3 + 1"
+	// parts = ["3","+","1"]
 
 	if len(parts) != 3 {
 		return "", errors.New("Выдача паники, так как формат математической операции не удовлетворяет заданию.")
@@ -34,8 +35,8 @@ func calculate(input string) (string, error) {
 	a, b := parts[0], parts[2]
 	operator := parts[1]
 
-	isRoman := isRomanNumeral(a) && isRomanNumeral(b)
-	isArabic := isArabicNumeral(a) && isArabicNumeral(b)
+	isRoman := isRomanNumeral(a) && isRomanNumeral(b)    //false
+	isArabic := isArabicNumeral(a) && isArabicNumeral(b) //true
 
 	if isRoman && isArabic || (!isRoman && !isArabic) {
 		return "", errors.New("Выдача паники, так как используются одновременно разные системы счисления.")
